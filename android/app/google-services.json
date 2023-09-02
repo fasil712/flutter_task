@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "769956868693",
+    "project_id": "flutter-2f-capital-auth",
+    "storage_bucket": "flutter-2f-capital-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:769956868693:android:2eb929b162be548bebdadc",
+        "android_client_info": {
+          "package_name": "com.example.flutter_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "769956868693-mh3gct36v68subg863ceqvoc8st7ac9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhrXgb91SU-T242v9nDJ3vfr2pgu_59pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "769956868693-mh3gct36v68subg863ceqvoc8st7ac9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
