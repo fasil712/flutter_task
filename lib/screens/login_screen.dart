@@ -112,7 +112,7 @@ class _SignupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Colors.white,
+        backgroundColor: Colors.white,
         fixedSize: const Size(200, 40),
       ),
       onPressed: () => Navigator.of(context).push<void>(SignupScreen.route()),

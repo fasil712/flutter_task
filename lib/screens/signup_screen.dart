@@ -98,7 +98,7 @@ class _SignupButton extends StatelessWidget {
             ? const CircularProgressIndicator()
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  backgroundColor: Colors.blue,
                   fixedSize: const Size(200, 40),
                 ),
                 onPressed: () {
