@@ -15,7 +15,6 @@ Future<void> main() {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       await Firebase.initializeApp();
-
       final authRepository = AuthRepository();
       runApp(App(authRepository: authRepository));
     },

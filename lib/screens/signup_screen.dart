@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task/screens/login_screen.dart';
 
 import '/cubits/cubits.dart';
 import '/repositories/repositories.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);
+  static Page page() => const MaterialPage<void>(child: SignupScreen());
 
   static Route route() {
     return MaterialPageRoute<void>(builder: (_) => const SignupScreen());
@@ -14,12 +16,14 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Signup')),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: BlocProvider<SignupCubit>(
-          create: (_) => SignupCubit(context.read<AuthRepository>()),
-          child: const SignupForm(),
+      backgroundColor: Color.fromARGB(255, 253, 250, 250),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(22.0),
+          child: BlocProvider<SignupCubit>(
+            create: (_) => SignupCubit(context.read<AuthRepository>()),
+            child: const SignupForm(),
+          ),
         ),
       ),
     );
@@ -40,13 +44,70 @@ class SignupForm extends StatelessWidget {
         }
       },
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 100.0),
+          const Text(
+            "REGISTER",
+            style: TextStyle(
+              // fontWeight: FontWeight.bold,
+              fontSize: 30.0,
+              fontFamily: 'WorkSans',
+            ),
+          ),
+          const SizedBox(height: 30.0),
+          const Text(
+            "First Name",
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 3.0),
           _EmailInput(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 22.0),
+          const Text(
+            "Last Name",
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+          _LastNameInput(),
+          const SizedBox(height: 3.0),
+          const SizedBox(height: 22.0),
+          const Text(
+            "Enter Password",
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 3.0),
           _PasswordInput(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 25),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'Forgot Password?',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 5.0),
           _SignupButton(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "Don't Have An Account?",
+                style: TextStyle(color: Colors.grey, fontSize: 16),
+              ),
+              TextButton(
+                  onPressed: () =>
+                      Navigator.of(context).push<void>(LoginScreen.route()),
+                  child: const Text(
+                    "Sign In",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ))
+            ],
+          )
         ],
       ),
     );
@@ -59,11 +120,51 @@ class _EmailInput extends StatelessWidget {
     return BlocBuilder<SignupCubit, SignupState>(
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
-        return TextField(
-          onChanged: (email) {
-            context.read<SignupCubit>().emailChanged(email);
-          },
-          decoration: const InputDecoration(labelText: 'email'),
+        return Container(
+          color: Colors.white,
+          child: TextFormField(
+            onChanged: (email) {
+              context.read<SignupCubit>().emailChanged(email);
+            },
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 0, 0, 0)), // Change the color as desired
+                ),
+                hintText: 'Email',
+                contentPadding: EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0)),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _LastNameInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignupCubit, SignupState>(
+      buildWhen: (previous, current) => previous.password != current.password,
+      builder: (context, state) {
+        return Container(
+          color: Colors.white,
+          child: TextFormField(
+            onChanged: (password) {
+              context.read<SignupCubit>().passwordChanged(password);
+            },
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 0, 0, 0)), // Change the color as desired
+                ),
+                hintText: 'Abebe Kebede',
+                contentPadding: EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0)),
+            obscureText: true,
+          ),
         );
       },
     );
@@ -76,12 +177,23 @@ class _PasswordInput extends StatelessWidget {
     return BlocBuilder<SignupCubit, SignupState>(
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
-        return TextField(
-          onChanged: (password) {
-            context.read<SignupCubit>().passwordChanged(password);
-          },
-          decoration: const InputDecoration(labelText: 'password'),
-          obscureText: true,
+        return Container(
+          color: Colors.white,
+          child: TextFormField(
+            onChanged: (password) {
+              context.read<SignupCubit>().passwordChanged(password);
+            },
+            decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(
+                          255, 0, 0, 0)), // Change the color as desired
+                ),
+                hintText: '* * * * * * * * *',
+                contentPadding: EdgeInsets.fromLTRB(16.0, 4.0, 16.0, 4.0)),
+            obscureText: true,
+          ),
         );
       },
     );
@@ -96,17 +208,26 @@ class _SignupButton extends StatelessWidget {
       builder: (context, state) {
         return state.status == SignupStatus.submitting
             ? const CircularProgressIndicator()
-            : ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  fixedSize: const Size(200, 40),
-                ),
-                onPressed: () {
-                  context.read<SignupCubit>().signupFormSubmitted();
-                },
-                child: const Text(
-                  'SIGN UP',
-                  style: TextStyle(color: Colors.white),
+            : Container(
+                width: 600,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                    )),
+                    padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                        const EdgeInsets.all(16.0)),
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0)),
+                  ),
+                  onPressed: () {
+                    context.read<SignupCubit>().signupFormSubmitted();
+                  },
+                  child: const Text(
+                    'REGISTER',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
                 ),
               );
       },
