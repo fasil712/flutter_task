@@ -30,106 +30,16 @@ class OTPScreen extends StatelessWidget {
                 const SizedBox(height: 3),
                 const Text("0912345678"),
                 const SizedBox(height: 30.0),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Flexible(
-                      child: Container(
-                          width: 40.0,
-                          color: Colors.white,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0,
-                                        0)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
-                    Flexible(
-                      child: Container(
-                          color: Colors.white,
-                          width: 40.0,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0,
-                                        0)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
-                    Flexible(
-                      child: Container(
-                          color: Colors.white,
-                          width: 40.0,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 10, 11,
-                                        11)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
-                    Flexible(
-                      child: Container(
-                          color: Colors.white,
-                          width: 40.0,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0,
-                                        0)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
-                    Flexible(
-                      child: Container(
-                          color: Colors.white,
-                          width: 40.0,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0,
-                                        0)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
-                    Flexible(
-                      child: Container(
-                          color: Colors.white,
-                          width: 40.0,
-                          child: TextFormField(
-                            obscureText: false,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0,
-                                        0)), // Change the color as desired
-                              ),
-                            ),
-                          )),
-                    ),
+                    FlexibleInput(),
+                    FlexibleInput(),
+                    FlexibleInput(),
+                    FlexibleInput(),
+                    FlexibleInput(),
+                    FlexibleInput(),
                   ],
                 ),
                 const SizedBox(height: 20.0),
@@ -169,6 +79,30 @@ class OTPScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class FlexibleInput extends StatelessWidget {
+  const FlexibleInput({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Container(
+          width: 40.0,
+          color: Colors.white,
+          child: TextFormField(
+            obscureText: false,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Color.fromARGB(
+                        255, 0, 0, 0)), // Change the color as desired
+              ),
+            ),
+          )),
     );
   }
 }

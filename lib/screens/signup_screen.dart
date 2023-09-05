@@ -7,8 +7,6 @@ import '/repositories/repositories.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);
-  static Page page() => const MaterialPage<void>(child: SignupScreen());
-
   static Route route() {
     return MaterialPageRoute<void>(builder: (_) => const SignupScreen());
   }

@@ -32,7 +32,6 @@ class LoginScreen extends StatelessWidget {
 
 class LoginForm extends StatelessWidget {
   const LoginForm({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(

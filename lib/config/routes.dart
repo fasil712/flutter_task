@@ -11,6 +11,6 @@ List<Page> onGenerateAppViewPages(
     case AppStatus.authenticated:
       return [HomeScreen.page()];
     case AppStatus.unauthenticated:
-      return [LoginScreen.page(), SignupScreen.page()];
+      return [LoginScreen.page()];
   }
 }
