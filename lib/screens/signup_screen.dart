@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task/constants/colors.dart';
 import 'package:flutter_task/screens/login_screen.dart';
 
 import '/cubits/cubits.dart';
@@ -14,7 +15,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 253, 250, 250),
+      backgroundColor: AppColors.mainColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
@@ -206,7 +207,7 @@ class _SignupButton extends StatelessWidget {
       builder: (context, state) {
         return state.status == SignupStatus.submitting
             ? const CircularProgressIndicator()
-            : Container(
+            : SizedBox(
                 width: 600,
                 child: ElevatedButton(
                   style: ButtonStyle(
@@ -217,7 +218,7 @@ class _SignupButton extends StatelessWidget {
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.all(16.0)),
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
+                        AppColors.buttonBackgroundColor),
                   ),
                   onPressed: () {
                     context.read<SignupCubit>().signupFormSubmitted();

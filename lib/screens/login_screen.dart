@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_task/constants/colors.dart';
 
 import '/cubits/cubits.dart';
 import '/repositories/repositories.dart';
@@ -16,7 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 253, 250, 250),
+      backgroundColor: AppColors.mainColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
@@ -167,7 +168,7 @@ class _LoginButton extends StatelessWidget {
       builder: (context, state) {
         return state.status == LoginStatus.submitting
             ? const CircularProgressIndicator()
-            : Container(
+            : SizedBox(
                 width: 600,
                 child: ElevatedButton(
                   style: ButtonStyle(
@@ -178,7 +179,7 @@ class _LoginButton extends StatelessWidget {
                     padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                         const EdgeInsets.all(16.0)),
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 0, 0, 0)),
+                        AppColors.buttonBackgroundColor),
                   ),
                   child: const Text(
                     'LOGIN',
